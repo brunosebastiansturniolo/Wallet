@@ -15,6 +15,12 @@ import {
   ShieldCheck,
   Zap,
   ExternalLink,
+  Briefcase,
+  GraduationCap,
+  Code,
+  Cloud,
+  Palette,
+  Globe,
 } from 'lucide-react';
 
 interface BehindTheScenesProps {
@@ -149,7 +155,150 @@ Especialidad: Aplicaciones ligeras, económicas y de alto rendimiento (Java/Spri
           </div>
         </section>
 
-        {/* 2. FILOSOFÍA DEL PROYECTO: BACKEND ARTESANAL VS FRONTEND CON IA (VIÑETAS DIRECTAS) */}
+        {/* 2. EXPERIENCIA LABORAL */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <Briefcase className="w-4 h-4 text-emerald-400" />
+            <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              Experiencia Profesional
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {CANDIDATE_PROFILE.workExperience.map((exp, idx) => (
+              <div key={idx} className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h3 className="text-sm font-bold text-white">{exp.role}</h3>
+                    <p className="text-xs text-emerald-400 font-semibold">{exp.company}</p>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-500 bg-slate-950 px-2 py-1 rounded-lg whitespace-nowrap">
+                    {exp.period}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {exp.tech.split(', ').map((tech, tIdx) => (
+                    <span key={tIdx} className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <ul className="space-y-1.5 text-xs text-slate-300">
+                  {exp.achievements.map((achievement, aIdx) => (
+                    <li key={aIdx} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 3. EDUCACIÓN */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="w-4 h-4 text-cyan-400" />
+            <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              Formación Académica
+            </h2>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h3 className="text-sm font-bold text-white">{CANDIDATE_PROFILE.education.degree}</h3>
+                <p className="text-xs text-cyan-400 font-semibold">{CANDIDATE_PROFILE.education.university}</p>
+              </div>
+              <span className="text-[10px] font-mono text-slate-500 bg-slate-950 px-2 py-1 rounded-lg whitespace-nowrap">
+                {CANDIDATE_PROFILE.education.period}
+              </span>
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Enfoque</p>
+              <p className="text-xs text-slate-300">{CANDIDATE_PROFILE.education.focus}</p>
+            </div>
+            <p className="text-xs text-emerald-300/80 italic">{CANDIDATE_PROFILE.education.highlight}</p>
+          </div>
+        </section>
+
+        {/* 4. HABILIDADES TÉCNICAS */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <Code className="w-4 h-4 text-purple-400" />
+            <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              Habilidades Técnicas
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Backend */}
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                <Terminal className="w-4 h-4" />
+                <span>Backend & Core</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {CANDIDATE_PROFILE.skills.backend.map((skill, idx) => (
+                  <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* DevOps */}
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                <Cloud className="w-4 h-4" />
+                <span>DevOps & Cloud</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {CANDIDATE_PROFILE.skills.devops.map((skill, idx) => (
+                  <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Frontend */}
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-purple-400 uppercase tracking-wider">
+                <Palette className="w-4 h-4" />
+                <span>Frontend & AI</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {CANDIDATE_PROFILE.skills.frontend.map((skill, idx) => (
+                  <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Idiomas */}
+          <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+              <Globe className="w-4 h-4" />
+              <span>Idiomas</span>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {CANDIDATE_PROFILE.languages.map((lang, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-white">{lang.name}</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 font-medium">
+                    {lang.level}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. FILOSOFÍA DEL PROYECTO: BACKEND ARTESANAL VS FRONTEND CON IA (VIÑETAS DIRECTAS) */}
         <section className="space-y-4">
           <div className="flex items-center gap-2">
             <Cpu className="w-4 h-4 text-emerald-400" />
@@ -199,7 +348,7 @@ Especialidad: Aplicaciones ligeras, económicas y de alto rendimiento (Java/Spri
           </div>
         </section>
 
-        {/* 3. DIAGRAMAS RUP Y ARQUITECTURA (EXPLORADOR COMPACTO) */}
+        {/* 6. DIAGRAMAS RUP Y ARQUITECTURA (EXPLORADOR COMPACTO) */}
         <section className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -235,7 +384,7 @@ Especialidad: Aplicaciones ligeras, económicas y de alto rendimiento (Java/Spri
           <DiagramRenderer diagram={selectedDiagram} onShowToast={onShowToast} />
         </section>
 
-        {/* 4. DATOS DE CONTACTO CLAVE (PIE DE PÁGINA PROFESIONAL) */}
+        {/* 7. DATOS DE CONTACTO CLAVE (PIE DE PÁGINA PROFESIONAL) */}
         <section className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border border-emerald-500/30 text-center space-y-4 shadow-xl">
           <div className="max-w-xl mx-auto space-y-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">
